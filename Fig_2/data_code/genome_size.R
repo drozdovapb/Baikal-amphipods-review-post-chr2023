@@ -2,10 +2,10 @@ library(ggplot2)
 library(openxlsx)
 library(forcats)
 
-gs_kar <- read.xlsx("Karyotypes_Kamaltynov.xlsx")
+gs_kar <- read.xlsx("../../Appendix_tables.xlsx", sheet = 2, rows = 4:60)
 gs_kar <- gs_kar[!(is.na(gs_kar$Genome.size.FIAD)), ]
 
-svg(width = 10, height=5)
+svg(width = 11, height=5)
 ggplot(gs_kar, aes(x=fct_reorder(paste(Genus, "\n", Species), Genome.size.FIAD), y=Genome.size.FIAD)) + 
   geom_bar(stat="identity") + 
   xlab("") + ylab("Genome size, pg") + 
